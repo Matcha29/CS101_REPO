@@ -1,0 +1,106 @@
+---
+title: "RWorksheet_Lumauag#3a"
+author: "Matt Andrei Lumauag"
+date: "2024-09-30"
+output: pdf_document
+---
+```{r}
+#1
+#a
+first11Letter <- letters[1:11]
+first11Letter
+
+#b
+oddNumberedList <- LETTERS[seq(1, 26, 2)]
+oddNumberedList
+
+#c    
+vowelLetters <- LETTERS[c(1, 5, 9,  15, 21)]
+vowelLetters
+
+#d
+LastLetter <- letters[22:26]
+LastLetter
+
+```
+
+
+
+
+```{r}
+#2
+
+#a
+city <- c("Tugegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+#b
+temp <- c(42, 39, 34, 34, 30, 27)
+
+#c
+CityTemp <- data.frame(city, temp)
+
+#d
+names(CityTemp) <- c("City", "Temperature")
+CityTemp
+
+#e
+str(CityTemp)
+
+#f
+CityTemp[3:4, ]
+
+#g
+CityTemp[which.max(CityTemp$Temperature), ]
+CityTemp[which.min(CityTemp$Temperature), ]
+
+
+#2
+#a
+matrx <- matrix(c(1,2,3,4,5,6,7,8,11,12,13,14), nrow =  3, ncol = 4)
+matrx
+
+#b
+matrx2 <- matrx*2
+matrx2
+
+#c
+matrx[2, ]
+
+#d
+matrx[1:2, 3:4]
+
+#e
+matrx[3, 2:3]
+
+#f
+matrx[ ,4]
+
+#g
+rownames(matrx) <- c("isa", "dalawa", "tatlo")
+colnames(matrx) <- c("uno", "dos", "tres", "quatro")
+matrx
+
+#h
+dim(matrx) <- c(6, 2)
+matrx
+```
+```{r}
+array1 <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+array2 <- rep(array1, each = 2)
+arraydim <- array(array2, dim = c(2, 4, 3))
+array2
+arraydim
+
+dimnames(arraydim) <- list(
+  c("a", "b"),  
+  LETTERS[1:4],  
+  c("1st-Dimensional Array", "2nd-Dimensional Array", 
+    "3rd-Dimensional Array")  
+)
+arraydim
+
+```
+
+
+
+
+
