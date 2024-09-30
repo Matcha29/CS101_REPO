@@ -83,6 +83,23 @@ matrx
 dim(matrx) <- c(6, 2)
 matrx
 ```
+```{r}
+array1 <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+array2 <- rep(array1, each = 2)
+arraydim <- array(array2, dim = c(2, 4, 3))
+array2
+arraydim
+
+dimnames(arraydim) <- list(
+  c("a", "b"),  
+  LETTERS[1:4],  
+  c("1st-Dimensional Array", "2nd-Dimensional Array", 
+    "3rd-Dimensional Array")  
+)
+arraydim
+
+```
+
 
 
 
