@@ -1,0 +1,84 @@
+---
+title: "RWorksheet_Lumauag#3b"
+author: "Matt Andrei Lumauag"
+date: "2024-10-01"
+output: pdf_document
+---
+```{r}
+#1
+#a
+FamData <- read.csv("C:/RPROJS/Worksheet#3/FAMILY.csv")
+#b
+str(FamData)
+summary(FamData)
+#c
+mean_siblings <- mean(FamData$Siblings.at.school, na.rm = TRUE)
+print(mean_siblings)
+#d
+firstTwoRows <- FamData[1:2, ]
+firstTwoRows
+#e
+three_fiveRow_two_fourCol <- FamData[c(3, 5), c(2, 4)]
+three_fiveRow_two_fourCol
+#f
+types_houses <- FamData$Types.of.houses
+types_houses
+#g
+male_farmer <- FamData[FamData$Sex == 1 & FamData$Fathers.Occupation == 1, ]
+male_farmer
+#h
+female_resp <- FamData[FamData$Sex == 2 & FamData$Siblings.at.school >= 5, ]
+female_resp
+```
+```{r}
+#2
+df = data.frame(Ints=integer(),
+
+Doubles=double(), Characters=character(),
+Logicals=logical(),
+Factors=factor(),
+stringsAsFactors=FALSE)
+
+print("Structure of the empty dataframe:")
+print(str(df))
+#a The empty data frame contains five columns (Ints, Doubles, Characters, Logicals, and Factors), each with distinct data types (integer, numeric, character, logical, and factor), but no observations.
+```
+```{r}
+#3
+#a
+HouseholdData <- read.csv("C:/RPROJS/Worksheet#3/HouseholdData.csv")
+str(HouseholdData)
+
+#b
+HouseholdData$Sex <- as.factor(HouseholdData$Sex)
+levels(HouseholdData$Sex) <- list("1" = "Male", "2" = "Female")
+
+str(HouseholdData)
+print(HouseholdData)
+
+#c
+HouseholdData$Types.of.houses <- as.factor(HouseholdData$Types.of.houses)
+levels(HouseholdData$Types.of.houses) <- list("1" = "Wood", "2" = "Congrete", "3" = "Semi-congrete")
+print(HouseholdData)
+str(HouseholdData)
+
+#d
+HouseholdData$Fathers.Occupation <- as.factor(HouseholdData$Fathers.Occupation)
+levels(HouseholdData$Fathers.Occupation) <- list("Farmer" = "1", "Driver" = "2", "Others" = "3")
+print(HouseholdData)
+str(HouseholdData)
+
+#e
+femaleRespondents <- FamData[FamData$Sex == 2 & FamData$Fathers.Occupation == 2, ]
+femaleRespondents
+
+#f
+Respondents <-FamData[FamData$Siblings.at.school >= 5, ]
+Respondents
+
+#4
+#The data table includes demographic information about ten respondents, detailing their sex, fathers' occupations, number of persons living at home, number of siblings attending school, and types of houses they live in.
+```
+
+
+
