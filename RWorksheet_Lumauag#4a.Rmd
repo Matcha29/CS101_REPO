@@ -2,9 +2,10 @@
 title: "RWorksheet_Lumauag#4a"
 author: "Matt Andrei Lumauag"
 date: "2024-10-14"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document: default
 ---
-
 ```{r}
 #1
 #a
@@ -31,7 +32,7 @@ mean(height)
 ```
 ```{r}
 #d
-#The relationship could exist due to biological factors, as larger feet are often associated with taller individuals.
+#The relationship could exist as larger feet are often associated with taller individuals.
 ```
 
 ```{r}
