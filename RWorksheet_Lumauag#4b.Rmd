@@ -31,29 +31,19 @@ for (i in 1:num_rows) {
 ```
 ```{r}
 #3
-start <- as.integer(readline(prompt = "Enter the starting number for the Fibonacci sequence: "))
-
-
-a <- start
-b <- start + 1
-
-
-cat(a, "\n")
-
+first <- as.integer(readline(prompt = "Enter starting number for fibonacci sequence(up to 500): "))
+fibonacci <- c(0,1)
 
 repeat {
-  next_num <- a + b
-  
-  if (is.na(next_num) > 500) {
+  next_fib <- sum(tail(fibonacci, 2))
+  if (next_fib > 500) {
     break
   }
-  
-  cat(next_num, "\n")
-  
-  a <- b
-  b <- next_num
+  fibonacci <- c(fibonacci, next_fib)
 }
 
+result <- fibonacci[fibonacci >= first]
+cat("Fibonacci sequence from", first, "up to 500:", result, "\n")
 ```
 ```{r}
 #4
@@ -79,12 +69,12 @@ genderCount <- c(Males = 14, Females = 14)
 
 
 barplot(
-  gender_counts, names.arg = "Number of Individuals", 
+  genderCount, names.arg = "Number of Individuals", 
   main = "Number of Males and Females in Household Data", 
   col = c("gray", "pink"))
 
 legend("topright",                                  
-       legend = names(gender_counts),              
+       legend = names(genderCount),              
        fill = c("gray", "pink"))                  
 
 ```
@@ -123,7 +113,6 @@ pie(speciesCounts, main = "Species Distribution in Iris Dataset", init.angle = 1
 ```{r}
 #d
 data(iris)
-
 setosa <- iris[iris$Species == "setosa", ]
 versicolor <- iris[iris$Species == "versicolor", ]
 virginica <- iris[iris$Species == "virginica", ]
