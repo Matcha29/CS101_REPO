@@ -69,3 +69,94 @@ install.packages("readxl")
 data <- read.table("ExcelData.csv", header = TRUE, sep = ",", stringsAsFactors =  FALSE)
 data
 ```
+```{r}
+#6
+user_input <- readline(prompt = "Please enter a number between 1 and 50: ")
+paste("The number you selected is:", user_input)
+
+  if(is.na(user_input) < 1 && user_input > 50) {
+    cat("The number selected is beyond the range of 1 to 50\n")
+  } else if (user_input == 20) {
+    cat("TRUE\n")
+  } else {
+    cat("You selected: ", user_input, "\n")
+  }
+```
+```{r}
+#7
+min_bills <- function(price) {
+  bills <- c(1000, 500, 200, 100, 50)
+  
+
+  count <- 0
+  
+  for (bill in bills) {
+    if (price <= 0) {
+      break
+    }
+    count <- count + floor(price / bill)
+    
+    price <- price %% bill
+  }
+  
+  return(count)
+}
+
+
+snack_price <- as.integer(readline(prompt = "Enter the price of the snack (divisible by 50): "))
+if (is.na(snack_price) %% 50 == 0) {
+  cat("Minimum number of bills needed:", min_bills(snack_price), "\n")
+} else {
+  cat("The price must be divisible by 50.\n")
+}
+```
+```{r}
+#8
+#a
+Grades <- data.frame (Name = c("Annie", "Thea", "Steve", "Hanna"),
+                       Grade_1 = c(85, 65, 75, 95),
+                       Grade_2 = c(65, 75, 55, 75),
+                       Grade_3 = c(85, 90, 80, 100),
+                       Grade_4 = c(100, 90, 85, 90)
+                       )
+Grades
+```
+
+
+```{r}
+#b
+for (i in 1:nrow(Grades)) {
+  avg_score <- sum(Grades[i, 2:5]) / 4
+  if (avg_score > 90) {
+    cat(Grades$Name[i], "'s average grade this semester is", avg_score, "\n")
+  }
+}
+```
+
+
+```{r}
+#c
+for (j in 2:ncol(Grades)) {
+  test_avg <- sum(Grades[, j]) / nrow(Grades)
+  if (test_avg < 80) {
+    cat("The", colnames(Grades)[j], "test was difficult.\n")
+  }
+}
+```
+```{r}
+#d
+for (i in 1:nrow(Grades)) {
+  highest_grade <- Grades[i, 2]
+  for (j in 3:5) {
+    if (Grades[i, j] > highest_grade) {
+      highest_grade <- Grades[i, j]
+    }
+  }
+  if (highest_grade > 90) {
+    cat(Grades$Name[i], "'s highest grade this semester is", highest_grade, "\n")
+  }
+}
+```
+
+
+
