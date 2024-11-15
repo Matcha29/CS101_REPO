@@ -110,6 +110,75 @@ ggplot(dataset, aes(x = displ, y = hwy, color = cyl)) +
        x = "Engine Displacement (L)",
        y = "Highway MPG")
 ```
+```{r}
+#7
+library(readxl)
+alexa_file <- read_excel("C:/RPROJS/alexa_file.xlsx")
+alexa_file
+```
+```{r}
+#a
+num_rows <- nrow(alexa_file)
+num_cols <- ncol(alexa_file)
+cat("Number of observations:", num_rows, "\n")
+cat("Number of columns:", num_cols, "\n")
+```
+```{r}
+#b
+library(dplyr)
+
+variations_count <- alexa_file %>%
+  group_by(variation) %>%
+  summarise(total_count = n())
+
+variations_count
+```
+```{r}
+#c
+install.packages("ggplot2")
+library(ggplot2)
+
+variation_plot <- ggplot(variations_count, aes(x = variation, y = total_count)) +
+  geom_bar(stat = "identity") +
+  xlab("Variations") +
+  ylab("Total Count") +
+  ggtitle("Total Count of Each Variation")
+
+variation_plot
+```
+```{r}
+#d
+library(dplyr)
+numofverifiedviews <- alexa_file %>%
+  group_by(date) %>%
+  summarise(count = n()) %>%
+  arrange(date)
+
+verified_reviews_plot <- ggplot(numofverifiedviews, aes(x = date, y = count)) +
+  geom_line(color = "black") +
+ labs(title = "Verified Reviews Over Time", x = "Date", y = "Verified Reviews") +
+  theme_minimal()
+
+
+verified_reviews_plot
+```
+```{r}
+#e
+colnames(alexa_file)
+variation_rate <- alexa_file %>%
+  group_by(variation) %>%
+  summarise(avg_rating = mean(rating, na.rm = TRUE)) %>%
+  arrange(desc(avg_rating))
+variation_rate
+
+ggplot(variation_rate, aes(x = reorder(variation, avg_rating), y = avg_rating, fill = variation)) +
+  geom_bar(stat = "identity") + labs(title = "Average Ratings by Variation", x = "Variation", y = "Average Rating") + coord_flip()
+```
+
+
+
+
+
 
 
 
